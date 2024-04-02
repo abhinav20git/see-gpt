@@ -10,7 +10,7 @@ import { createUserWithEmailAndPassword,
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import {addUser} from "../utils/userSlice.js"
-
+import {USER_AVATAR} from  "../utils/constants.js";
 const Login = () => {
   
 
@@ -42,7 +42,7 @@ const Login = () => {
             const user=userCredential.user;    
             updateProfile(user, {
               displayName: name.current.value, 
-              photoURL: "https://in.images.search.yahoo.com/search/images;_ylt=AwrKFxs7xvNllHYDMuK7HAx.;_ylu=Y29sbwNzZzMEcG9zAzEEdnRpZAMEc2VjA3Nj?p=profile+image&type=E210IN826G0&ei=UTF-8&fr=mcafee&th=118.9&tw=118.9&imgurl=https%3A%2F%2Fd2qp0siotla746.cloudfront.net%2Fimg%2Fuse-cases%2Fprofile-picture%2Ftemplate_0.jpg&rurl=https%3A%2F%2Fsnappa.com%2Fcreate%2Fprofile-pictures&size=45KB&name=Online+Profile+Picture+Maker+-+Free+%26+Easy+to+Use+%7C+Snappa&oid=4&h=1000&w=1000&turl=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.L8bs33mJBAUBA01wBfJnjQHaHa%26pid%3DApi%26rs%3D1%26c%3D1%26qlt%3D95%26w%3D118%26h%3D118&tt=Online+Profile+Picture+Maker+-+Free+%26+Easy+to+Use+%7C+Snappa&sigr=tYQqu59JM6SS&sigit=7puVwIBgPTgN&sigi=Nrivuf_LB94n&sign=hkpc.TyiCXrF&sigt=hkpc.TyiCXrF"
+              photoURL: USER_AVATAR,
             }).then(() => {
               const {uid,email,displayName,photoURL} = auth.currentUser;
               dispatch(addUser({uid:uid,email:email,displayName:displayName,photoURL:photoURL}));
