@@ -1,16 +1,16 @@
 import React from 'react'
 import Header from './Header'
-import {useState,useRef} from 'react';
-import {checkValidData} from '../utils/validate.js';
-import {auth} from "../utils/firebase.js";
+import { useState,useRef } from 'react';                                           
+import { checkValidData } from '../utils/validate.js';
+import { auth } from "../utils/firebase.js";
 import { createUserWithEmailAndPassword,
          signInWithEmailAndPassword,
          updateProfile
        } from "firebase/auth";
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import {addUser} from "../utils/userSlice.js"
-import {USER_AVATAR} from  "../utils/constants.js";
+import { addUser } from "../utils/userSlice.js"
+import { IMG_URL, USER_AVATAR } from  "../utils/constants.js";
 const Login = () => {
   
 
@@ -51,8 +51,6 @@ const Login = () => {
               setErrorMessage(error.message);
             });
         
-        console.log(user);
-        // ...
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -67,7 +65,7 @@ const Login = () => {
       .then((userCredential) => {
         // Signed in 
         const user = userCredential.user;
-        console.log(user);
+        
         navigate("/browse");
         // ...
       })
@@ -83,7 +81,7 @@ const Login = () => {
     <div>
       <Header/>
     <div className='absolute'>
-      <img  src="https://assets.nflxext.com/ffe/siteui/vlv3/c0b69670-89a3-48ca-877f-45ba7a60c16f/2642e08e-4202-490e-8e93-aff04881ee8a/IN-en-20240212-popsignuptwoweeks-perspective_alpha_website_large.jpg" alt="background image"/>
+      <img  src={IMG_URL} alt="background"/>
     </div>
     <form onSubmit={(e)=>e.preventDefault()} className="w-1/4 absolute bg-black bg-opacity-80 p-12 left-0 right-0 my-36 mx-auto text-white">
       <h1 className="font-bold text-3xl px-2 py-4">{isSignInForm ? "Sign In":"Sign Up"}</h1>
